@@ -1,0 +1,83 @@
+using Tarkistaja;
+
+
+public class DebugKoe : IDebugKoe
+{
+    // ***** Debug-koe *****
+
+    // Debug-kokeessa Tarkistaja.dll kutsuu PalautaTrue- ja
+    // HaeSuurimmanLuvunPaikka -funktioita.
+
+    // Sinun tehtävänäsi on asettaa näihin funktioihin keskeytyskohdat oikeisin
+    // kohtiin ja vain keskeytyskohtien sekä debuggerin avulla muuttaa funktioiden
+    // käyttäytymistä siten, että ne palauttavat halutut arvot.
+    // Itse koodia ei saa muokata.
+
+    // Läpäistyäsi kokeen ilmoita ohjaajalle, jolloin ohjaaja käy kokeen vielä
+    // läpi kanssasi.
+
+
+    /// <summary>
+    /// Tehtävä 1.
+    /// 
+    /// Muuta funktion paluuarvoa ohjelman suorituksen aikana
+    /// käyttäen debuggeria siten, että funktio palauttaa true.
+    /// </summary>
+    public static bool PalautaTrue
+    {
+        get
+        {
+            // Seuraava bool pitää muuttaa trueksi käyttäen debuggeria.
+            bool lapaistaanko = false;
+
+            return lapaistaanko;
+        }
+    }
+
+
+    /// <summary>
+    /// Tehtävä 2.
+    /// 
+    /// Funktiolle annetaan parametrina taulukko lukuja, joka sisältää 999 samaa
+    /// yhtä sattumanvaraista lukua. 
+    /// Lisäksi jossain kohdassa taulukkoa on yksi, muita lukuja suurempi luku.
+    /// Funktion tarkoituksena on palauttaa tämän yhden, muita suuremman luvun paikka,
+    /// mutta funktion koodissa onkin vika, minkä takia funktio palauttaa aina vain -1.
+    ///
+    /// Tehtävänäsi on löytää tämän yhden, kaikkia muita lukuja suuremman, luvun
+    /// paikka parametrina annetusta taulukosta käyttäen ehdollista keskeytyskohtaa.
+    ///	Sitten korvaat debuggeria käyttäen luvunPaikka-muuttujan arvon suuremman
+    ///	luvun oikealla paikalla (toteutuksessa luvunPaikka on aina vain -1), 
+    /// jotta funktio palauttaa oikean arvon.
+    /// 
+    /// Tehtävässä täytyy käyttää ehdollista keskeytyskohtaa. Pelkkä taulukon
+    /// selaaminen läpi ei riitä vastaukseksi.
+    /// 
+    /// </summary>
+    /// <param name="taulukko">Läpikäytävä kokonaislukutaulukko</param>
+    /// <returns>Indeksi, jossa erilainen kohta oli</returns>
+    public int HaeSuuremmanLuvunPaikka(int[] taulukko)
+    {
+        int luvunPaikka = -1;
+
+        int luku = taulukko[0];
+        int edellinenLuku = luku;
+
+        for (int i = 1; i < taulukko.Length; i++)
+        {
+            edellinenLuku = luku;
+            luku = taulukko[i];
+        }
+
+        return luvunPaikka;
+    }
+
+
+    /// <summary>
+    /// Pääohjelma. Voit jättää tämän huomiotta.
+    /// </summary>
+    public static void Main()
+    {
+        new Tarkistaja.Tarkistaja(new DebugKoe(), DebugExamLanguage.FINNISH).Aloita();
+    }
+}
